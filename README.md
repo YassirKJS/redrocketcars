@@ -1,3 +1,12 @@
+### What I used so far:
+
+npm: https://nodejs.org/en/download/
+live-server: https://www.npmjs.com/package/live-server
+lodash: https://www.npmjs.com/package/lodash
+browserify: https://www.npmjs.com/package/browserify
+create-react-app: https://www.npmjs.com/package/create-react-app
+tachyons: https://tachyons.io/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +75,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
