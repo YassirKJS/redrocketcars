@@ -4,9 +4,9 @@ import './Hello.css';
 class Hello extends Component {
 	render() {
 		return (
-			<div class='f1 i tc'>
+			<div className='f1 i tc'>
 				<h1>Hello</h1>
-				<p>Comment allez vous?</p>
+				<p>{this.props.greeting}</p>
 			</div>
 		);
 	}
