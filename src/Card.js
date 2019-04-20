@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Card = ({id, name, email}) => {
-	const cars = require('./resources/' + name + '.webp');
+	const carsimgs = require('./resources/' + name + '_body_icon.webp');
 	return (
 		<div className="tc bg-black dib br3 pa3 ma2 grow bw2 shadow-5">
-			<img alt="cars" src={cars} height="250" width="250"/>
+			<img alt="cars" src={carsimgs	} height="250" width="250"/>
 			<div>
 				<h2 className="white">{name}</h2>
 			</div>
