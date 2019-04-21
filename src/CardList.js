@@ -1,3 +1,8 @@
+/*
+	Child Component to App.js
+	accepts cars as props even though in App.js it's a state
+*/
+
 import React from 'react';
 import Card from './Card';
 

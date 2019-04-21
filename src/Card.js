@@ -6,7 +6,7 @@ const Card = ({id, name, email}) => {
 		<div className="tc bg-black dib br3 pa3 ma2 grow bw2 shadow-5">
 			<img alt="cars" src={carsimgs	} height="250" width="250"/>
 			<div>
-				<h2 className="white">{name}</h2>
+				<h2 className="gold">{name}</h2>
 			</div>
 		</div>		
 	);
