@@ -12,7 +12,11 @@ const CardList = ({ cars }) => {
 			{
 				cars.map((user, i) => {
 					return (
-						<Card key={i} id={cars[i].id} name={cars[i].name} email={cars[i].email}/>
+						<Card 
+							key={i} 
+							id={cars[i].id} 
+							name={cars[i].name} 
+						/>
 					);
 				})
 			}
