@@ -33,7 +33,18 @@ class App extends Component {
       </div>
     );
   }
-	
 }
 
 export default App;
+/*
+import React from 'react';
+import CardList from './CardList';
+import { cars } from './cars';
+
+const App = () => {
+	return (
+		<CardList cars={cars}/>
+	);
+}
+*/
+
