@@ -4,9 +4,10 @@
 */
 
 import React, {Component} from 'react';
-import CardList from './CardList';
-import { cars } from './cars';
-import Searchbox from './Searchbox';
+import CardList from '../components/CardList';
+import { cars } from '../cars';
+import Searchbox from '../components/Searchbox';
+import Scroll from '../components/Scroll';
 import './App.css';
 
 class App extends Component {
@@ -37,7 +38,9 @@ class App extends Component {
       <div className="tc">
         <h1 className="f2 gold">Rocket Powered Battle Cars</h1>
         <Searchbox searchChange={this.onSearchChange}/>
-        <CardList cars={filteredCars}/>
+        <Scroll>
+          <CardList cars={filteredCars}/>
+        </Scroll>
       </div>
     );
   }
