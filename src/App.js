@@ -13,9 +13,15 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      cars: cars,
+      cars: [],
       searchfield: ''
     };
+    console.log("constructor");
+  }
+
+  componentDidMount() {
+    this.setState({ cars: cars });
+    console.log("componentDidMount");
   }
 
   onSearchChange = (event) => {
@@ -26,6 +32,7 @@ class App extends Component {
     const filteredCars = this.state.cars.filter(car => {
       return car.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
     });
+    console.log("render");
     return (
       <div className="tc">
         <h1 className="f2 gold">Rocket Powered Battle Cars</h1>
