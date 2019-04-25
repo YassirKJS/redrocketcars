@@ -21,8 +21,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.store)
     this.setState({ cars: cars });
     console.log("componentDidMount");
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //   .then(response => responde.json())
+    //   .then(users => {this.setState({ cars: users })});
   }
 
   onSearchChange = (event) => {
