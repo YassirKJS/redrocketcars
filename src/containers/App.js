@@ -10,11 +10,15 @@ import { cars } from '../cars';
 import Searchbox from '../components/Searchbox';
 import Scroll from '../components/Scroll';
 import './App.css';
-import { setSearchField } from '../actions';
+import { setSearchFieldAction, requestCarsAction } from '../actions';
 
 const mapStateToProps = state => {
   return {
-    searchField: state.searchField
+    //props
+    searchField: state.searchCarsReducer.searchField,
+    cars: state.requestCarsReducer.cars,
+    isPending: state.requestCarsReducer.isPending,
+    error: state.requestCarsReducer.error
   }
 }
 
@@ -24,7 +28,8 @@ const mapStateToProps = state => {
 //then the searchField is going to listen to the user input
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event) => dispatch(setSearchFieldAction(event.target.value)),
+    onRequestCars: () => dispatch(requestCarsAction())
   }
 }
 
@@ -43,8 +48,11 @@ class App extends Component {
     this.setState({ cars: cars });
     console.log("componentDidMount");
     // fetch('https://jsonplaceholder.typicode.com/users')
-    //   .then(response => responde.json())
+    //   .then(response => response.json())
     //   .then(users => {this.setState({ cars: users })});
+
+    /* replace above with this*/
+    //this.props.onRequestCars();
   }
 
   // onSearchChange = (event) => {
