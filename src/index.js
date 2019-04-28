@@ -10,6 +10,7 @@ import 'tachyons';
 
 const store = createStore(searchCarsReducer);
 
+// The Provider component gonna pass up the store to the other components
 ReactDOM.render(
                 <Provider store={store}>
                   <App />

@@ -4,18 +4,36 @@
 */
 
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import { cars } from '../cars';
 import Searchbox from '../components/Searchbox';
 import Scroll from '../components/Scroll';
 import './App.css';
+import { setSearchField } from '../actions';
+
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchField
+  }
+}
+
+//dispatch the ACTION setSearchField
+//the ACTION is just a fct that returns an object
+//we cant to dispatch that so the REDUCERS are aware of it
+//then the searchField is going to listen to the user input
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+  }
+}
 
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      cars: [],
-      searchfield: ''
+      cars: []
+      //searchfield: '' removed because redux
     };
     console.log("constructor");
   }
@@ -29,19 +47,21 @@ class App extends Component {
     //   .then(users => {this.setState({ cars: users })});
   }
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value});
-  }
+  // onSearchChange = (event) => {
+  //   this.setState({ searchfield: event.target.value});
+  // }
+  //removed because redux, it s already coming up as props
 
   render() {
+    const { searchField, onSearchChange } = this.props;
     const filteredCars = this.state.cars.filter(car => {
-      return car.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+      return car.name.toLowerCase().includes(searchField.toLowerCase()); //replaced this.state.searchfield
     });
     console.log("render");
     return (
       <div className="tc">
         <h1 className="f2 gold">Rocket Powered Battle Cars</h1>
-        <Searchbox searchChange={this.onSearchChange}/>
+        <Searchbox searchChange={onSearchChange}/>
         <Scroll>
           <CardList cars={filteredCars}/>
         </Scroll>
@@ -49,17 +69,7 @@ class App extends Component {
     );
   }
 }
+// connect the App component: subscribe to any changes in the redux store
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App;
-/*
-import React from 'react';
-import CardList from './CardList';
-import { cars } from './cars';
-
-const App = () => {
-	return (
-		<CardList cars={cars}/>
-	);
-}
-*/
 
