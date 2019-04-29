@@ -11,9 +11,10 @@ export const setSearchFieldAction = (text) => ({
   payload: text
 })
 
-export const requestCarsAction = (dispatch) => {
+//higher order function: a fct that returns a fct
+export const requestCarsAction = () => (dispatch) => {
   dispatch({ type: REQUEST_CARS_PENDING});
-  fetch('https://jsonplaceholder.typicode.com/users')
+  fetch('https://api.myjson.com/bins/v9hnc')
     .then(response => response.json())
     .then(data => dispatch({ type: REQUEST_CARS_SUCCESS, payload: data }))
     .catch(error => dispatch({ type: REQUEST_CARS_FAILED, payload: error }))

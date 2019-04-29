@@ -6,7 +6,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import CardList from '../components/CardList';
-import { cars } from '../cars';
 import Searchbox from '../components/Searchbox';
 import Scroll from '../components/Scroll';
 import './App.css';
@@ -44,15 +43,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.store)
-    this.setState({ cars: cars });
-    console.log("componentDidMount");
-    // fetch('https://jsonplaceholder.typicode.com/users')
+    // console.log(this.props.store)
+    // this.setState({ cars: cars });
+    // console.log("componentDidMount");
+    // fetch('https://api.myjson.com/bins/v9hnc')
     //   .then(response => response.json())
     //   .then(users => {this.setState({ cars: users })});
 
     /* replace above with this*/
-    //this.props.onRequestCars();
+    this.props.onRequestCars();
   }
 
   // onSearchChange = (event) => {
@@ -61,8 +60,8 @@ class App extends Component {
   //removed because redux, it s already coming up as props
 
   render() {
-    const { searchField, onSearchChange } = this.props;
-    const filteredCars = this.state.cars.filter(car => {
+    const { searchField, onSearchChange, cars } = this.props;
+    const filteredCars = cars.filter(car => {
       return car.name.toLowerCase().includes(searchField.toLowerCase()); //replaced this.state.searchfield
     });
     console.log("render");
