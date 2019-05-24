@@ -45,13 +45,14 @@ class App extends Component {
   componentDidMount() {
     // console.log(this.props.store)
     // this.setState({ cars: cars });
-    // console.log("componentDidMount");
+
     // fetch('https://api.myjson.com/bins/v9hnc')
     //   .then(response => response.json())
     //   .then(users => {this.setState({ cars: users })});
 
     /* replace above with this*/
     this.props.onRequestCars();
+    console.log("componentDidMount");
   }
 
   // onSearchChange = (event) => {
@@ -60,20 +61,22 @@ class App extends Component {
   //removed because redux, it s already coming up as props
 
   render() {
-    const { searchField, onSearchChange, cars } = this.props;
+    const { searchField, onSearchChange, cars, isPending } = this.props;
     const filteredCars = cars.filter(car => {
       return car.name.toLowerCase().includes(searchField.toLowerCase()); //replaced this.state.searchfield
     });
     console.log("render");
-    return (
-      <div className="tc">
-        <h1 className="f2 gold">Rocket Powered Battle Cars</h1>
-        <Searchbox searchChange={onSearchChange}/>
-        <Scroll>
-          <CardList cars={filteredCars}/>
-        </Scroll>
-      </div>
-    );
+    if (isPending) return <h1 className="f2 gold">loading..</h1>
+    else
+      return(
+        <div className="tc">
+          <h1 className="f2 gold">Rocket Powered Battle Cars</h1>
+          <Searchbox searchChange={onSearchChange}/>
+          <Scroll>
+            <CardList cars={filteredCars}/>
+          </Scroll>
+        </div>
+      );
   }
 }
 // connect the App component: subscribe to any changes in the redux store

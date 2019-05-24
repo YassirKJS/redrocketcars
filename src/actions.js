@@ -12,6 +12,7 @@ export const setSearchFieldAction = (text) => ({
 })
 
 //higher order function: a fct that returns a fct
+//comes with redux thunk
 export const requestCarsAction = () => (dispatch) => {
   dispatch({ type: REQUEST_CARS_PENDING});
   fetch('https://api.myjson.com/bins/v9hnc')
